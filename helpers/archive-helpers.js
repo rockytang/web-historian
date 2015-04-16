@@ -25,17 +25,54 @@ exports.initialize = function(pathsObj){
 // The following function names are provided to you to suggest how you might
 // modularize your code. Keep it clean!
 
-exports.readListOfUrls = function(){
+exports.readListOfUrls = function(callback, res, url){
+  //read sites.txt
+  //return sites as an array of objects
+  fs.readFile('../archives/sites.txt','utf8' ,function(err,data){
+    var parseData = JSON.parse(data);
+    if(callback) {callback(parseData, res, url);}
+  })
 };
 
-exports.isUrlInList = function(){
+//readListOfUrls(isUrlInList)
+exports.isUrlInList = function(parseData, res, url){
+  //check for url in sites.txt
+  var length = parseData.urls.length;
+
+  for(var i = 0; i < length; i++){
+    console.log('comparing: '+parseData.urls[i].site);
+    console.log('desired url: '+url);
+    if(parseData.urls[i].site === url){
+      console.log("isUrlinList is true!")
+      //alert user that it is already in the list
+      //some http-helper function
+
+    }
+  }
+  console.log("isUrlinList is false!")
+
+  //do something
+  //add it to the list
+  exports.addUrlToList(parseData,res,url);
 };
 
-exports.addUrlToList = function(){
+exports.addUrlToList = function(parseData, res, url){
+  //push into array
+  var ourSite = {
+    "site": url,
+    "archived":false };
+  parseData.urls.push(ourSite);
+
+  fs.writeFile('../archives/sites.txt', JSON.stringify(parseData)
+    /* http helper func */)
+  //write sites.txt
+  //some http-helper function
 };
 
 exports.isURLArchived = function(){
+  //check if a url is archived
 };
 
 exports.downloadUrls = function(){
+  //??? use http get library to save snapshot of site
 };

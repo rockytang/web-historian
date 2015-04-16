@@ -13,7 +13,25 @@ exports.headers = headers = {
 exports.serveAssets = function(res, asset, callback) {
   // Write some code here that helps serve up your static files!
   // (Static files are things like html (yours or archived from others...), css, or anything that doesn't change often.)
+  fs.readFile('public' + asset, function(err,data){
+    // console.log("we are here 2!")
+
+    callback(res);
+    res.writeHead(200, headers);
+    // console.log('wrote head')
+    //cb to change content-type
+
+    // console.log('data: '+data)
+    var dataString = data.toString();
+    res.end(dataString);
+  })
+
 };
+
+exports.notFound = function(res){
+  res.writeHead(404, headers);
+  res.end('404 Not Found');
+}
 
 
 
