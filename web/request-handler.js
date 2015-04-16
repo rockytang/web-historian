@@ -21,6 +21,12 @@ exports.handleRequest = function (req, res) {
     } //else {
       //helpers.notFound(res);
     //}
+    if(req.url === '/loading.html'){
+      helpers.serveAssets(res, '/loading.html', function(response){
+        response.setHeader('content-type', 'text/html')
+      });
+    }
+
   }
 
   if(req.method === 'POST'){

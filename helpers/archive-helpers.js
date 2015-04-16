@@ -1,7 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var _ = require('underscore');
-
+var helpers = require('../web/http-helpers');
 /*
  * You will need to reuse the same paths many times over in the course of this sprint.
  * Consider using the `paths` object below to store frequently used file paths. This way,
@@ -63,8 +63,8 @@ exports.addUrlToList = function(parseData, res, url){
     "archived":false };
   parseData.urls.push(ourSite);
 
-  fs.writeFile('../archives/sites.txt', JSON.stringify(parseData)
-    /* http helper func */)
+  fs.writeFile('../archives/sites.txt', JSON.stringify(parseData),
+    function(){helpers.redirect(res, '/loading.html')})
   //write sites.txt
   //some http-helper function
 };

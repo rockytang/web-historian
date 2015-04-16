@@ -28,6 +28,13 @@ exports.serveAssets = function(res, asset, callback) {
 
 };
 
+//res.setHeader('Location', '/loading.html');
+exports.redirect = function(res, newPage){
+  res.setHeader('Location', newPage);
+  res.writeHead(301,headers);
+  res.end();
+}
+
 exports.notFound = function(res){
   res.writeHead(404, headers);
   res.end('404 Not Found');
