@@ -54,7 +54,7 @@ exports.isUrlInList = function(parseData, res, url){
     }
   }
 
-  if(isFound){helpers.redirect(res, '/archived.html') } else {
+  if(isFound){helpers.redirect(res, '/'+url) } else {
     exports.addUrlToList(parseData,res,url);
     console.log("isUrlinList is false!")
   }
