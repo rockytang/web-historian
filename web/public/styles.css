@@ -1,6 +1,36 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100);
+
 body {
   background-color: black;
   color: white;
   margin : 0px;
-  font-family: arial, sans-serif;
+  font-family: 'Lato', sans-serif;
+}
+
+.container {
+  width: 500px;
+  position: relative;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.enter {
+  font-size: 40px;
+  width: 500px;
+  position: relative;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+form {
+  width: 500px;
+  position: relative;
+  margin: 0 auto;
+}
+
+input {
+  width: 500px;
+  height: 50px;
+  font-size: 30px;
+  margin-top: 20px;
 }

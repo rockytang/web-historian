@@ -12,6 +12,9 @@ module.exports = function () {
   if (!fs.existsSync("./archives/sites.txt")) {
     // We use fs.openSync to create the file
     var file = fs.openSync("./archives/sites.txt", "w");
+    var url = {urls:[]};
+    fs.writeSync(file, JSON.stringify(url))
+
     fs.closeSync(file);
   }
 

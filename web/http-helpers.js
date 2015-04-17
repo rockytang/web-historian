@@ -13,7 +13,7 @@ exports.headers = headers = {
 exports.serveAssets = function(res, asset, callback) {
   // Write some code here that helps serve up your static files!
   // (Static files are things like html (yours or archived from others...), css, or anything that doesn't change often.)
-  fs.readFile('public' + asset, function(err,data){
+  fs.readFile(archive.paths['siteAssets'] + asset, function(err,data){
     // console.log("we are here 2!")
 
     callback(res);
@@ -25,8 +25,16 @@ exports.serveAssets = function(res, asset, callback) {
     var dataString = data.toString();
     res.end(dataString);
   })
-
 };
+
+exports.serveSite = function(res, url){
+  fs.readFile(archive.paths['archivedSites'] + url, function(err,data){
+    console.log('file read! filename: '+url);
+    res.writeHead(200, headers);
+    res.end(data.toString());
+
+  });
+}
 
 //res.setHeader('Location', '/loading.html');
 exports.redirect = function(res, newPage){
